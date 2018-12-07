@@ -11,15 +11,17 @@ import {
 
 
 import { AppRoutingModule } from './app-routing.module';
-import { MockEmployeesService } from './mock-employees.service';
+import { MocksService } from './mock.service';
 
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { ProjectComponent } from './project/project.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    ProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { EmployeeComponent } from './employee/employee.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(MockEmployeesService),
+    HttpClientInMemoryWebApiModule.forRoot(MocksService),
     MatTableModule,
     MatIconModule,
     MatCardModule,
