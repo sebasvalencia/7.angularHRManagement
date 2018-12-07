@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import {
   MatTableModule, MatIconModule, MatCardModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule,
-  MatInputModule, MatButtonModule
+  MatInputModule, MatButtonModule, MatGridListModule
 } from '@angular/material';
 
 
@@ -16,12 +16,14 @@ import { MocksService } from './mock.service';
 import { AppComponent } from './app.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ProjectComponent } from './project/project.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    ProjectComponent
+    ProjectComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +40,8 @@ import { ProjectComponent } from './project/project.component';
     MatNativeDateModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
-
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [MatDatepickerModule],
   bootstrap: [AppComponent]
