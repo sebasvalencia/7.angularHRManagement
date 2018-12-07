@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Employee } from '../employee.interface';
 import { EmployeeService } from '../employee.service';
 
@@ -22,10 +22,10 @@ export class EmployeeComponent implements OnInit {
 
     this.form = this.fb.group({
       id: '',
-      name: '',
-      age: '',
-      birthday: '',
-      favoriteColor: '',
+      name: ['', Validators.required],
+      age: ['', Validators.required],
+      birthday: ['', Validators.required],
+      favoriteColor: ['', Validators.required],
       projectId: ''
     });
 

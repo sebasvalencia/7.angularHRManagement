@@ -24,8 +24,8 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.url);
   }
 
-  addEmployee(employeeName: Employee) {
-    return this.http.post(this.url, employeeName).pipe(
+  addEmployee(employee: Employee) {
+    return this.http.post(this.url, employee).pipe(
       switchMap(() => this.http.get<Employee[]>(this.url))
     );
   }
