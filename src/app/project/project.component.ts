@@ -38,7 +38,6 @@ export class ProjectComponent implements OnInit {
   ngOnInit() { }
 
   getProjects() {
-    console.log('getProjects compo');
     this.service.getProjects().subscribe((data: Project[]) => {
       this.dataSource = data;
     });

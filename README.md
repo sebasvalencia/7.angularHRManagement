@@ -35,5 +35,8 @@ Create employeeComponent
 
 Create interface Project
 Create projectService
+Create projectComponent
 
+Create dashboardComponent
 
+Modify routing dashboard
