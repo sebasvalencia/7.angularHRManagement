@@ -24,3 +24,12 @@ https://material.angular.io/
 
 in-memory-web-api:
 https://github.com/angular/in-memory-web-api
+
+
+## Parts
+
+Create interface Employee
+Create MockEmployeesService
+Create employeeService
+Create employeeComponent
+

@@ -1,0 +1,94 @@
+<h1>Employee</h1>
+
+<button mat-fab (click)="showForm(1)">
+  <mat-icon>add</mat-icon>
+</button>
+
+<div *ngIf="showFormValue">
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+
+    <mat-form-field>
+      <input matInput type="text" formControlName="name" placeholder="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" formControlName="age" placeholder="Age">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="birthday">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="color" formControlName="favoriteColor" placeholder="Color">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput type="text" formControlName="projectId" placeholder="Proyect">
+    </mat-form-field>
+    <button mat-button  type="submit">
+      <mat-icon>save</mat-icon> {{nameButton}}
+    </button>
+
+  </form>
+  <pre>{{ form.value | json }}</pre>
+
+</div>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element">{{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef> Age </th>
+    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="birthday">
+    <th mat-header-cell *matHeaderCellDef> Birthday </th>
+    <td mat-cell *matCellDef="let element">{{element.birthday}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="favoriteColor">
+    <th mat-header-cell *matHeaderCellDef> Favorite Color </th>
+    <td mat-cell *matCellDef="let element">
+      <div [style.backgroundColor]="element.favoriteColor">{{element.favoriteColor}}</div>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="projectId">
+    <th mat-header-cell *matHeaderCellDef> projectId </th>
+    <td mat-cell *matCellDef="let element">{{element.projectId}} </td>
+  </ng-container>
+
+  <!-- Edit Column -->
+  <ng-container matColumnDef="edit">
+    <th mat-header-cell *matHeaderCellDef> Edit </th>
+    <td mat-cell *matCellDef="let row"> <button md-raised-button (click)="editEmployee(row)">
+        <mat-icon>edit</mat-icon>
+      </button> </td>
+  </ng-container>
+
+  <!-- Edit Column -->
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef> Delete </th>
+    <td mat-cell *matCellDef="let row"> <button md-raised-button (click)="deleteEmployee(row)">
+        <mat-icon>delete</mat-icon>
+      </button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<router-outlet></router-outlet>
