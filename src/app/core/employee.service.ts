@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Employee } from './employee.interface';
+import { Employee } from '../home/employee/employee.interface';
 import { switchMap } from 'rxjs/operators';
 
 const httOptions = {

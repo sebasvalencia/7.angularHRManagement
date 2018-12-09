@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Employee } from './employee.interface';
-import { Project } from './project.interface';
+import { Employee } from '../home/employee/employee.interface';
+import { Project } from '../home/project/project.interface';
 
 export class MocksService implements InMemoryDbService {
   createDb() {

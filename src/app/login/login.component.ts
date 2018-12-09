@@ -24,9 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log('entre');
     if (this.form.get('username').value === 'admin' && this.form.get('password').value === 'admin') {
-      this.router.navigate(['/dashboard']);
-      // this.router.navigate(['/dashboard'], {queryParams: {username: this.form.get('username').value} }   );
+      this.router.navigate(['./dashboard']);
     } else {
       alert('Invalid credentials');
       this.clearFields();
