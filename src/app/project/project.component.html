@@ -15,7 +15,7 @@
       <input matInput type="text" formControlName="clientName" placeholder="clientName">
     </mat-form-field>
 
-    <button mat-button  type="submit">
+    <button mat-button type="submit">
       <mat-icon>save</mat-icon> {{nameButton}}
     </button>
 
@@ -77,5 +77,11 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<button>
+  <a [routerLink]="['/dashboard']" routerLinkActive="active">
+    <mat-icon>arrow_left</mat-icon>
+  </a>
+</button>
 
 <!-- <router-outlet></router-outlet> -->
