@@ -1,4 +1,4 @@
-import { Project } from './project.interface';
+import { Project } from '../home/project/project.interface';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { switchMap } from 'rxjs/operators';

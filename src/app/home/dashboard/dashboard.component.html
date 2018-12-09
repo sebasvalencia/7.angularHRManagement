@@ -2,6 +2,7 @@
   <mat-toolbar-row>
     <span>Welcome to HR Management {{name | json}}</span>
     <span class="example-spacer"></span>
+    <span>Logout</span>
     <a [routerLink]="[ '/logout']"><mat-icon class="example-icon">logout</mat-icon></a>    
   </mat-toolbar-row>
 </mat-toolbar>
@@ -9,7 +10,7 @@
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile>
     <button>
-      <a [routerLink]="['/employee']" routerLinkActive="active">
+      <a [routerLink]="['./employee']" routerLinkActive="active">
         <mat-icon>person</mat-icon>
       </a>
     </button>
@@ -17,10 +18,12 @@
 
   <mat-grid-tile>
     <button>
-      <a [routerLink]="['/project']">
+      <a [routerLink]="['./project']" routerLinkActive="active">
         <mat-icon>folder</mat-icon>
       </a>
     </button>
   </mat-grid-tile>
+
+  <router-outlet></router-outlet>
 
 </mat-grid-list>

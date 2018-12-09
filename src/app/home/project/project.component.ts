@@ -1,7 +1,8 @@
-import { ProjectService } from './../project.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Project } from './../project.interface';
 import { Component, OnInit } from '@angular/core';
+import { ProjectService } from 'src/app/core/project.service';
+import { Project } from './project.interface';
+
 
 @Component({
   selector: 'app-project',
