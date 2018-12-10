@@ -1,8 +1,13 @@
 <h1>Proyect</h1>
 
-<button mat-fab (click)="showForm(1)">
-  <mat-icon>add</mat-icon>
-</button>
+<div>
+  <button mat-fab [routerLink]="['/dashboard']">
+    <mat-icon>arrow_left</mat-icon>
+  </button>
+  <button mat-fab (click)="showForm(1)">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 
 <div *ngIf="showFormValue">
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
