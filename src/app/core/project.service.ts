@@ -24,20 +24,20 @@ export class ProjectService {
     return this.http.get<Project[]>(this.url);
   }
 
-  addProjects(project: Project) {
+  addProjects(project: Project): Observable<Project[]> {
     return this.http.post(this.url, project).pipe(
       switchMap(() => this.http.get<Project[]>(this.url))
     );
   }
 
-  editProject(id, project: Project) {
+  editProject(id: number, project: Project): Observable<Project[]> {
     const url = `${this.url}/${id}`;
     return this.http.put<Project[]>(url, project, httOptions).pipe(
       switchMap(() => this.http.get<Project[]>(this.url))
     );
   }
 
-  deleteProject(project: Project) {
+  deleteProject(project: Project): Observable<Project[]> {
     const url = `${this.url}/${project.id}`;
     return this.http.delete<Project[]>(url, httOptions).pipe(
       switchMap(() => this.http.get<Project[]>(this.url))

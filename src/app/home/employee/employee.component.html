@@ -1,8 +1,14 @@
 <h1>Employee</h1>
 
-<button mat-fab (click)="showForm(1)">
-  <mat-icon>add</mat-icon>
-</button>
+<div>
+  <button mat-fab [routerLink]="['/dashboard']">
+    <mat-icon>arrow_left</mat-icon>
+  </button>
+
+  <button mat-fab (click)="showForm(1)">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
 
 <div *ngIf="showFormValue">
   <form (ngSubmit)="onSubmit()" [formGroup]="form">
@@ -28,12 +34,11 @@
     <mat-form-field>
       <input matInput type="text" formControlName="projectId" placeholder="Proyect">
     </mat-form-field>
-    <button mat-button  type="submit">
+    <button mat-button type="submit">
       <mat-icon>save</mat-icon> {{nameButton}}
     </button>
 
   </form>
-  <!-- <pre>{{ form.value | json }}</pre> -->
 
 </div>
 
@@ -56,7 +61,7 @@
 
   <ng-container matColumnDef="birthday">
     <th mat-header-cell *matHeaderCellDef> Birthday </th>
-    <td mat-cell *matCellDef="let element">{{element.birthday}} </td>
+    <td mat-cell *matCellDef="let element">{{element.birthday | date}} </td>
   </ng-container>
 
   <ng-container matColumnDef="favoriteColor">
@@ -71,7 +76,6 @@
     <td mat-cell *matCellDef="let element">{{element.projectId}} </td>
   </ng-container>
 
-  <!-- Edit Column -->
   <ng-container matColumnDef="edit">
     <th mat-header-cell *matHeaderCellDef> Edit </th>
     <td mat-cell *matCellDef="let row"> <button md-raised-button (click)="editEmployee(row)">
@@ -79,7 +83,6 @@
       </button> </td>
   </ng-container>
 
-  <!-- Edit Column -->
   <ng-container matColumnDef="delete">
     <th mat-header-cell *matHeaderCellDef> Delete </th>
     <td mat-cell *matCellDef="let row"> <button md-raised-button (click)="deleteEmployee(row)">
@@ -90,10 +93,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-
-<button>
-  <a [routerLink]="['/dashboard']" routerLinkActive="active" >
-   <mat-icon>arrow_left</mat-icon>
- </a>
-</button>
-
