@@ -24,20 +24,20 @@ export class EmployeeService {
     return this.http.get<Employee[]>(this.url);
   }
 
-  addEmployee(employee: Employee) {
+  addEmployee(employee: Employee): Observable<Employee[]> {
     return this.http.post(this.url, employee).pipe(
       switchMap(() => this.http.get<Employee[]>(this.url))
     );
   }
 
-  editEmployee(row) {
-    const url = `${this.url}/${row.id.value}`;
-    return this.http.put<Employee[]>(url, { id: row.id.value, name: row.name.value }, httOptions).pipe(
+  editEmployee(id: number, employee: Employee): Observable<Employee[]> {
+    const url = `${this.url}/${id}`;
+    return this.http.put<Employee[]>(url, employee, httOptions).pipe(
       switchMap(() => this.http.get<Employee[]>(this.url))
     );
   }
 
-  deleteEmployee(employee: Employee) {
+  deleteEmployee(employee: Employee): Observable<Employee[]> {
     const url = `${this.url}/${employee.id}`;
     return this.http.delete<Employee[]>(url, httOptions).pipe(
       switchMap(() => this.http.get<Employee[]>(this.url))

@@ -62,8 +62,9 @@ export class EmployeeComponent implements OnInit {
           this.dataSource = data;
         });
         break;
-      case 2: // row
-        this.service.editEmployee(this.form.controls).subscribe((data) => {
+      case 2:
+        employee['id'] = this.form.get('id').value;
+        this.service.editEmployee(this.form.controls.id.value, employee).subscribe((data) => {
           this.dataSource = data;
         });
         break;
