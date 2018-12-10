@@ -6,18 +6,13 @@ import { ProjectComponent } from './project/project.component';
 
 
 const routes: Routes = [
-    {
-        path: '',
-        component: DashboardComponent,
-        children: [
-            { path: 'employee', component: EmployeeComponent },
-            { path: 'project', component: ProjectComponent },
-        ]
-    },
+  { path: '', component: DashboardComponent },
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'project', component: ProjectComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 export class HomeRoutingModule { }

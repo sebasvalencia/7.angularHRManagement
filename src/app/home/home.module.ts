@@ -14,7 +14,8 @@ import {
   MatSelectModule, MatInputModule,
   MatButtonModule,
   MatGridListModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -38,7 +39,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatGridListModule,
     MatToolbarModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatPaginatorModule
   ]
 })
 export class HomeModule { }

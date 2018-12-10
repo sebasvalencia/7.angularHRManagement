@@ -1,7 +1,8 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProjectService } from 'src/app/core/project.service';
 import { Project } from './project.interface';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { Project } from './project.interface';
 export class ProjectComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'teamSize', 'clientName', 'edit', 'delete'];
-  dataSource: Project[];
+  dataSource = new MatTableDataSource<Project>([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   form: FormGroup;
 
   id: number;
@@ -40,7 +43,8 @@ export class ProjectComponent implements OnInit {
 
   getProjects() {
     this.service.getProjects().subscribe((data: Project[]) => {
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -62,13 +66,15 @@ export class ProjectComponent implements OnInit {
       case 1:
         project['teamSize'] = 0;
         this.service.addProjects(project).subscribe((data: Project[]) => {
-          this.dataSource = data;
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
         });
         break;
       case 2:
         project['id'] = this.form.get('id').value;
         this.service.editProject(this.form.controls.id.value, project).subscribe((data: Project[]) => {
-          this.dataSource = data;
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
         });
         break;
 
@@ -112,7 +118,8 @@ export class ProjectComponent implements OnInit {
 
   deleteProject(row) {
     this.service.deleteProject(row).subscribe((data) => {
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

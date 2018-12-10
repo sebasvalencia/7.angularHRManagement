@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/core/employee.service';
 import { Employee } from './employee.interface';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-employee',
@@ -11,9 +12,10 @@ import { Employee } from './employee.interface';
 export class EmployeeComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'age', 'birthday', 'favoriteColor', 'projectId', 'edit', 'delete'];
-  dataSource: Employee[];
-  form: FormGroup;
+  dataSource = new MatTableDataSource<Employee>([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  form: FormGroup;
   showFormValue = false;
   nameButton = 'SAVE';
   option = 1;
@@ -29,6 +31,7 @@ export class EmployeeComponent implements OnInit {
       projectId: ''
     });
 
+    // this.service.getData();
     this.getEmployees();
   }
 
@@ -36,8 +39,8 @@ export class EmployeeComponent implements OnInit {
 
   getEmployees() {
     this.service.getEmployees().subscribe((data: Employee[]) => {
-      console.log('data', data);
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
@@ -60,13 +63,15 @@ export class EmployeeComponent implements OnInit {
     switch (this.option) {
       case 1:
         this.service.addEmployee(employee).subscribe((data: Employee[]) => {
-          this.dataSource = data;
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
         });
         break;
       case 2:
         employee['id'] = this.form.get('id').value;
         this.service.editEmployee(this.form.controls.id.value, employee).subscribe((data) => {
-          this.dataSource = data;
+          this.dataSource = new MatTableDataSource(data);
+          this.dataSource.paginator = this.paginator;
         });
         break;
 
@@ -114,7 +119,8 @@ export class EmployeeComponent implements OnInit {
 
   deleteEmployee(row) {
     this.service.deleteEmployee(row).subscribe((data) => {
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

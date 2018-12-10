@@ -1,8 +1,8 @@
+import { Employee } from './../home/employee/employee.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Employee } from '../home/employee/employee.interface';
-import { switchMap } from 'rxjs/operators';
+import { Observable, forkJoin } from 'rxjs';
+import { switchMap, map, mergeMap } from 'rxjs/operators';
 import { Project } from '../home/project/project.interface';
 
 const httOptions = {
@@ -19,23 +19,55 @@ export class EmployeeService {
 
   url = '/app/employees';
   urlProject = '/app/projects';
+  loadedCharacter: {};
 
   constructor(private http: HttpClient) { }
 
-  // getProyect(projects, employeeData) {
-  //   console.log('projects', projects);
-  //   return projects.filter(employee => employee.id === employeeData.projectId);
+  getData() {
+
+
+
+
+    const cars = this.http.get(this.url);
+    const bikes = this.http.get(this.urlProject);
+
+    // cars.pipe(
+    //   switchMap((s: Employee) => {
+    //     return this.getS(s.projectId, bikes).map(u => {
+    //       return Object.assign(s, { u: u });
+    //     });
+    //   })
+    // ).subscribe(console.log);
+
+    //  return forkJoin([cars, bikes]).pipe(
+    //    map(responses => {
+    //      console.log('responses[0]: ', responses[0]);
+    //    })
+    //  );
+
+    // return this.http.get(this.url).pipe(
+    //   map((val: Employee) => {
+    //     return this.http.get(this.urlProject).subscribe((val2: Project) =>{
+    //       if (val.projectId === val2.id) {
+    //         console.log('val', val, 'val2', val2);
+    //       }
+    //     });
+    //   })
+
+    // );
+
+
+  }
+
+
+
+  //  getS(employeeData, projects) {
+  //    console.log('projects123:', projects);
+  //    return projects.filter(project => project.id === employeeData);
   // }
 
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.url);
-  //  return this.http.get<Employee[]>(this.url).pipe(
-  //     switchMap(employee => {
-  //       return this.getProyect(this.http.get<Project[]>(this.urlProject).subscribe(() ), employee).map(e => {
-  //         return Object.assign(employee, {employee: e});
-  //       });
-  //    })
-  //   );
   }
 
   addEmployee(employee: Employee): Observable<Employee[]> {
@@ -58,7 +90,7 @@ export class EmployeeService {
     );
   }
 
-  
+
 
 
 
