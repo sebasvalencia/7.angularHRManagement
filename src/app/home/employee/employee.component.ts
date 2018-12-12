@@ -22,6 +22,7 @@ export class EmployeeComponent implements OnInit {
   showFormValue = false;
   nameButton = 'SAVE';
   option = 1;
+  title = 'Employee';
 
   projectList: Project[] = [];
 

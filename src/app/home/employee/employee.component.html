@@ -1,11 +1,18 @@
-<h1>Employee</h1>
+<mat-toolbar class="container" color="primary">
+  <mat-toolbar-row>
+    <span>Welcome to HR Management - {{title}}</span>
+    <span class="toolbar-spacer"></span>
+    <span>Logout</span>
+    <a [routerLink]="[ '/logout']"><mat-icon class="logout-icon">logout</mat-icon></a>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <div>
-  <button mat-fab [routerLink]="['/dashboard']">
+  <button mat-fab matTooltip="Return Dashboard" [routerLink]="['/dashboard']">
     <mat-icon>arrow_left</mat-icon>
   </button>
 
-  <button mat-fab (click)="showForm(1)">
+  <button mat-fab matTooltip="Add Employee" (click)="showForm(1)">
     <mat-icon>add</mat-icon>
   </button>
 </div>

@@ -1,3 +1,11 @@
+
+<mat-toolbar class="container" color="primary">
+  <mat-toolbar-row>
+    <span>Welcome to HR Management</span>
+    <span class="example-spacer"></span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <mat-card class="container"
 fxLayout="row" 
 fxLayout.xs="column" 
@@ -5,11 +13,12 @@ fxLayoutWrap
 fxLayoutGap="0.5%" 
 fxLayoutAlign="center" 
 layout="column" 
-layout-align="center center">
+>
   <mat-card-content class="notfound">
     <h1>Oops! Page not found</h1>
     <h1><span>4</span><span>0</span><span>4</span></h1>
     <h2>we are sorry, but the page you requested was not found</h2>
+    <h2>Redirect in : {{countdown}}</h2>
     <button mat-raised-button [routerLink]="[ '/login']">LOGIN</button>
   </mat-card-content>
 </mat-card>
