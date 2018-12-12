@@ -9,19 +9,17 @@
 
 <mat-grid-list cols="2" rowHeight="2:1">
   <mat-grid-tile>
-    <button>
-      <a [routerLink]="['./employee']" routerLinkActive="active">
-        <mat-icon>person</mat-icon>
-      </a>
-    </button>
+    <mat-card fxLayoutAlign="center" class="card-dashboard" [routerLink]="['./employee']">
+        <img mat-card-image 
+        src="../../../assets/img_avatar.png" alt="">
+    </mat-card>
   </mat-grid-tile>
 
   <mat-grid-tile>
-    <button>
-      <a [routerLink]="['./project']" routerLinkActive="active">
-        <mat-icon>folder</mat-icon>
-      </a>
-    </button>
+      <mat-card fxLayoutAlign="center" class="card-dashboard" [routerLink]="['./project']">
+        <img mat-card-image 
+        src="../../../assets/folder.jpg" alt="">
+    </mat-card>
   </mat-grid-tile>
 
 </mat-grid-list>
