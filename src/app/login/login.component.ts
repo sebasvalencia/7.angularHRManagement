@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('entre');
     if (this.form.get('username').value === 'admin' && this.form.get('password').value === 'admin') {
       this.router.navigate(['./dashboard']);
     } else {

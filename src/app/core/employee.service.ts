@@ -23,49 +23,6 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) { }
 
-  getData() {
-
-
-
-
-    const cars = this.http.get(this.url);
-    const bikes = this.http.get(this.urlProject);
-
-    // cars.pipe(
-    //   switchMap((s: Employee) => {
-    //     return this.getS(s.projectId, bikes).map(u => {
-    //       return Object.assign(s, { u: u });
-    //     });
-    //   })
-    // ).subscribe(console.log);
-
-    //  return forkJoin([cars, bikes]).pipe(
-    //    map(responses => {
-    //      console.log('responses[0]: ', responses[0]);
-    //    })
-    //  );
-
-    // return this.http.get(this.url).pipe(
-    //   map((val: Employee) => {
-    //     return this.http.get(this.urlProject).subscribe((val2: Project) =>{
-    //       if (val.projectId === val2.id) {
-    //         console.log('val', val, 'val2', val2);
-    //       }
-    //     });
-    //   })
-
-    // );
-
-
-  }
-
-
-
-  //  getS(employeeData, projects) {
-  //    console.log('projects123:', projects);
-  //    return projects.filter(project => project.id === employeeData);
-  // }
-
   getEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.url);
   }
