@@ -1,9 +1,9 @@
 <mat-toolbar class="container" color="primary">
   <mat-toolbar-row>
-    <span>Welcome to HR Management {{name | json}}</span>
-    <span class="example-spacer"></span>
+    <span>Welcome to HR Management - {{title}}</span>
+    <span class="toolbar-spacer"></span>
     <span>Logout</span>
-    <a [routerLink]="[ '/logout']"><mat-icon class="example-icon">logout</mat-icon></a>
+    <a [routerLink]="[ '/logout']"><mat-icon class="logout-icon">logout</mat-icon></a>
   </mat-toolbar-row>
 </mat-toolbar>
 

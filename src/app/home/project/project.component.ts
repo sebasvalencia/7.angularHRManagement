@@ -22,6 +22,7 @@ export class ProjectComponent implements OnInit {
   name: string;
   teamSize: number;
   clientName: string;
+  title = 'Project';
 
   showFormValue = false;
   nameButton = 'SAVE';
