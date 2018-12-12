@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/core/employee.service';
 import { Employee } from './employee.interface';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { ProjectService } from 'src/app/core/project.service';
+import { map } from 'rxjs/operators';
+import { Project } from '../project/project.interface';
 
 @Component({
   selector: 'app-employee',
@@ -20,7 +23,9 @@ export class EmployeeComponent implements OnInit {
   nameButton = 'SAVE';
   option = 1;
 
-  constructor(private fb: FormBuilder, private service: EmployeeService) {
+  projectList: Project[] = [];
+
+  constructor(private fb: FormBuilder, private service: EmployeeService, private serviceProject: ProjectService) {
 
     this.form = this.fb.group({
       id: '',
@@ -31,11 +36,18 @@ export class EmployeeComponent implements OnInit {
       projectId: ''
     });
 
-    // this.service.getData();
     this.getEmployees();
+    this.getSelectProject();
   }
 
   ngOnInit() { }
+
+
+  getSelectProject() {
+    this.serviceProject.getProjects().subscribe( (data) => {
+      this.projectList = data;
+    });
+  }
 
   getEmployees() {
     this.service.getEmployees().subscribe((data: Employee[]) => {
