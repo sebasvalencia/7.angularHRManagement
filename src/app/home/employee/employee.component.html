@@ -32,8 +32,13 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput type="text" formControlName="projectId" placeholder="Proyect">
+      <mat-select formControlName="projectId" placeholder="Proyect">
+        <mat-option *ngFor="let project of projectList" [value]="project.id">
+          {{project.name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
+
     <button mat-button type="submit">
       <mat-icon>save</mat-icon> {{nameButton}}
     </button>
