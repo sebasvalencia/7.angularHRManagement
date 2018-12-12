@@ -42,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     FlexLayoutModule,
     MatPaginatorModule
+    
   ]
 })
 export class HomeModule { }
