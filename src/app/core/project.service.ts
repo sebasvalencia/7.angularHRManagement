@@ -31,6 +31,7 @@ export class ProjectService {
   }
 
   editProject(id: number, project: Project): Observable<Project[]> {
+    console.log('proj', project);
     const url = `${this.url}/${id}`;
     return this.http.put<Project[]>(url, project, httOptions).pipe(
       switchMap(() => this.http.get<Project[]>(this.url))

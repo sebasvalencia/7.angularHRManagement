@@ -15,8 +15,8 @@ export class MocksService implements InMemoryDbService {
     ];
     const projects: Project[] = [
       { id: 1, name: 'Project1', teamSize: 0, clientName: 'client1' },
-      { id: 3, name: 'Project2', teamSize: 0, clientName: 'client1' },
-      { id: 2, name: 'Project3', teamSize: 0, clientName: 'client1' },
+      { id: 2, name: 'Project2', teamSize: 0, clientName: 'client1' },
+      { id: 3, name: 'Project3', teamSize: 0, clientName: 'client1' },
       { id: 4, name: 'Project4', teamSize: 0, clientName: 'client2' },
       { id: 5, name: 'Project5', teamSize: 0, clientName: 'client2' },
       { id: 6, name: 'Project6', teamSize: 0, clientName: 'client2' },

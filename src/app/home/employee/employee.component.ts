@@ -78,6 +78,10 @@ export class EmployeeComponent implements OnInit {
         this.service.addEmployee(employee).subscribe((data: Employee[]) => {
           this.dataSource = new MatTableDataSource(data);
           this.dataSource.paginator = this.paginator;
+          this.projectList[this.form.get('projectId').value].teamSize++;
+          this.serviceProject.
+            editProject(this.form.get('projectId').value, 
+                        this.projectList[this.form.get('projectId').value]).subscribe( console.log );
         });
         break;
       case 2:
